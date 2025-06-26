@@ -29,6 +29,7 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private JwtService jwtService;
 
+    //method to register user
     @Override
     public AuthResponseDto registerUser(UserRequestDto request) {
         // TODO Auto-generated method stub
@@ -36,11 +37,13 @@ public class AuthServiceImpl implements AuthService {
         // if(userRepository.existsByEmail(request.getEmail())){
         //     throw new IllegalArgumentException("User with email already exists: " + request.getEmail());
         // }
-
+        
+        //assigning default role if role is not assigned
         if(request.getRole()==null){
             request.setRole(Role.CUSTOMER);
         }
 
+        //building/creating the user from dto
         User user=User.builder()
                   .firstName(request.getFirstName())
                   .lastName(request.getLastName())
@@ -48,24 +51,26 @@ public class AuthServiceImpl implements AuthService {
                   .role(request.getRole())
                   .password(passwordEncoder.encode(request.getPassword()))
                   .build();
-       
+       //saving the user
         userRepository.save(user);
+        //generating the jwt token and returning it in auth response
         String jwtToken=jwtService.generateToken(user);
         return AuthResponseDto.builder()
                               .token(jwtToken)
                               .build();
-
     }
 
     @Override
     public AuthResponseDto loginUser(LoginRequestDto request) {
         // TODO Auto-generated method stub
+        //authentication using username and password
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(), request.getPassword()));
+        //getting the user by email
         User user= userRepository.findByEmail(request.getEmail())
                              .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+        //generate the jwt token and return
         String jwtToken=jwtService.generateToken(user);
         return AuthResponseDto.builder()
                               .token(jwtToken)

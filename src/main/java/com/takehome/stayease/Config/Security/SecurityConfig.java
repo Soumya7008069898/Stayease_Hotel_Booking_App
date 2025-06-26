@@ -21,7 +21,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 //import org.springframework.security.web.util.matcher.RequestMatcher;
 
-
+//Security config class along with jwt implementation
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true)
@@ -36,12 +36,13 @@ public class SecurityConfig {
     // @Autowired
     // private CustomAccesDeniedHandler accesDeniedHandler;
 
+    //seting of the security filter chain and providing access to rolebased urls.
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.csrf(csrf -> csrf.disable());
 
-        // Add this block to override default 403 with 401
+        //  used to override default 403 with 401(not needed)
         // httpSecurity.exceptionHandling(handler -> handler
         //         .accessDeniedHandler(accesDeniedHandler));
 
@@ -64,6 +65,7 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
+    //authentication provider which is use to authenticate username and password during login
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

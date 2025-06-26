@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//dto representing the response of booking created
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

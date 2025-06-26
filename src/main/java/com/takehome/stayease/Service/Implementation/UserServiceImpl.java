@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.takehome.stayease.Repository.UserRepository;
-
+//userservice which is used to laod the username after checking from repository for login
 @Service
 public class UserServiceImpl implements UserDetailsService {
     

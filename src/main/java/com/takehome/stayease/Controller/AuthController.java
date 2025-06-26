@@ -23,12 +23,14 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    //controller method for registering user. this is accessed by all roles
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDto> registerUser(@Valid @RequestBody UserRequestDto request){
         AuthResponseDto response=authService.registerUser(request);
         return ResponseEntity.status(HttpStatus.OK).body(response);// changed to 200.
     }
 
+    //controller method for login user.
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> loginUser(@Valid @RequestBody LoginRequestDto request){
         AuthResponseDto response=authService.loginUser(request);

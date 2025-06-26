@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Dto for updating Hotel(no validation)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

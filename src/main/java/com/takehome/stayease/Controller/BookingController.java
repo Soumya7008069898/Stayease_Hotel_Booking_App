@@ -28,6 +28,9 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
+    //controller method for user to create a booking.
+    //only user with role customer allowed
+    //principal holds the username when login is successful
     @PreAuthorize("hasRole('CUSTOMER')")
     @PostMapping("/{hotel_Id}")
     public ResponseEntity<BookingResponseDto> createBooking(@PathVariable("hotel_Id") Long hotel_Id,
@@ -38,6 +41,7 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    //controller method to fetch booking details by booking id. allowed only for customer role
     @PreAuthorize("hasRole('CUSTOMER')")
     @GetMapping("/{booking_Id}")
     public ResponseEntity<BookingResponseDto> getBookingById(@PathVariable("booking_Id") Long booking_Id){
@@ -46,6 +50,7 @@ public class BookingController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    //controller method for delete booking . only allowed for Hotel_Manager role.
     @PreAuthorize("hasRole('HOTEL_MANAGER')")
     @DeleteMapping("/{booking_Id}")
     public ResponseEntity<Void> deleteBookingById(@PathVariable("booking_Id") Long booking_Id){

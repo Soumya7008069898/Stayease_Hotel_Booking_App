@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Dto for create a booking for the hotel
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

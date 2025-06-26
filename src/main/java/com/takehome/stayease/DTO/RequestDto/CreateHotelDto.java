@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Dto for creating a hotel
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

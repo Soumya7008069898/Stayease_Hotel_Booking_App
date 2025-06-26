@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//response of hotel when created and updated.
 @Data
 @Builder
 @NoArgsConstructor

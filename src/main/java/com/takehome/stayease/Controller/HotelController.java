@@ -34,6 +34,7 @@ public class HotelController {
     @Autowired
     private HotelService hotelService;
 
+    //controller method to create Hotel. only allowed with role admin
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<HotelResponseDto> createHotel(@Valid @RequestBody CreateHotelDto request){
@@ -43,8 +44,7 @@ public class HotelController {
        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    //public
-    //@PreAuthorize("hasAnyRole('ADMIN', 'MANAGER', 'CUSTOMER')")
+    //controller method to get all hotels . it is a public api
     @GetMapping
     public ResponseEntity<List<HotelResponsePublicDto>> getAllHotel(){
         List<Hotel> hotels=hotelService.getAllHotels();
@@ -55,6 +55,7 @@ public class HotelController {
         return ResponseEntity.status(HttpStatus.OK).body(responses);
     }
 
+    //controller method to upload hotel. only user with hotel_manager role is allowed
     @PreAuthorize("hasRole('HOTEL_MANAGER')")
     @PutMapping("/{hotel_Id}")
     public ResponseEntity<Map<String,Object>> updateHotelData(@PathVariable("hotel_Id") Long hotel_Id, @Valid @RequestBody UpdateHotelDto request){
@@ -62,6 +63,7 @@ public class HotelController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    //controller method to delete hotel. only user with Admin role are allowed.
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{hotel_Id}")
     public ResponseEntity<Void> deleteHotel(@PathVariable("hotel_Id") Long hotel_Id){

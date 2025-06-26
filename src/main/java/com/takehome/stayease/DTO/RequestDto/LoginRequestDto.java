@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Dto for sending login request.
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
