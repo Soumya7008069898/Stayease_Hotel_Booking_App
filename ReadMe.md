@@ -1,10 +1,10 @@
-# 🏨 Hotel Booking System - RESTful API
+# Hotel Booking System - RESTful API
 
 A Spring Boot-based RESTful API for managing hotel room bookings, built with role-based access control, JWT authentication, and MySQL persistence. It supports  **Admins** ,  **Hotel Managers** , and  **Customers** , offering secure booking and hotel management functionalities.
 
----
+Author: Soumya Prakash Sahoo
 
-## 🔧 Tech Stack
+## Tech Stack
 
 * **Backend** : Spring Boot
 * **Database** : MySQL
@@ -16,7 +16,7 @@ A Spring Boot-based RESTful API for managing hotel room bookings, built with rol
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 1. Ensure MySQL is running and the database `test_db` exists.
 2. Set up `application.properties` accordingly. Along with JWT secret key and expiration defined in application.properties file.
@@ -31,7 +31,7 @@ bash
 
 `	http://localhost:8081/`
 
-## 🔐 Roles & Permissions
+## Roles & Permissions
 
 | Role              | Permissions                                                                      |
 | ----------------- | -------------------------------------------------------------------------------- |
@@ -41,7 +41,7 @@ bash
 
 ---
 
-## 📦 Sample Credentials
+## Sample Credentials
 
 * **Admin** : Use role `"ADMIN"` during registration
 * **Hotel Manager** : Use role `"HOTEL_MANAGER"`
@@ -49,9 +49,9 @@ bash
 
 ---
 
-## 📘 API Endpoints
+## API Endpoints
 
-### 🔐 Auth APIs (Public)
+### Auth APIs (Public)
 
 | Method | Endpoint                | Description                |
 | ------ | ----------------------- | -------------------------- |
@@ -60,7 +60,7 @@ bash
 
 ---
 
-### 🏨 Hotel Management
+### Hotel Management
 
 | Method | Endpoint                  | Description          | Access       |
 | ------ | ------------------------- | -------------------- | ------------ |
@@ -71,7 +71,7 @@ bash
 
 ---
 
-### 📅 Booking Management
+### Booking Management
 
 | Method | Endpoint                      | Description         | Access        |
 | ------ | ----------------------------- | ------------------- | ------------- |
@@ -79,7 +79,7 @@ bash
 | GET    | `/api/bookings/{bookingId}` | Get booking details | Customer only |
 | DELETE | `/api/bookings/{bookingId}` | Cancel booking      | Manager only  |
 
-## 📏 Validation & Business Rules
+## Validation & Business Rules
 
 * Only **one** room can be booked per request.
 * Booking only allowed if `availableRooms > 0`.
@@ -90,8 +90,7 @@ bash
 * Password must be:
   * At least 8 characters
 
-
-## ⚠️ Error Handling
+## Error Handling
 
 | HTTP Code | Meaning                              |
 | --------- | ------------------------------------ |
@@ -100,9 +99,7 @@ bash
 | 403       | Forbidden (Insufficient role)        |
 | 404       | Not Found (User, Hotel, Booking etc) |
 
-
-
-## 🧪 Testing
+## Testing
 
 Unit testing are included using JUnit 5, Mockito
 
@@ -114,8 +111,7 @@ Unit testing are included using JUnit 5, Mockito
 * `HotelServiceImplTest`
 * `BookServiceImplTest`
 
-
-## 📁 Project Structure
+## Project Structure
 
 com.takehome.stayease
 │
